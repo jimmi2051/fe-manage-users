@@ -1,0 +1,150 @@
+// $theme-colors: (
+//   "info": tomato,
+//   "dark": rgb(62, 62, 62),
+//   // "danger": teal,
+// );
+
+@import "~bootstrap/scss/bootstrap";
+
+@import "elements/toast";
+html {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+p {
+  font-size: 14px;
+  margin: 0;
+  color: #3e3e3e;
+}
+
+#root {
+  position: relative;
+  min-height: 100vh;
+}
+
+.table th,
+.table td {
+  vertical-align: middle;
+  word-break: break-word;
+}
+
+.pb-100 {
+  padding-bottom: 100px !important;
+}
+
+body {
+  padding: 0px !important;
+}
+// body.modal-open {
+//   overflow: hidden;
+//   position: fixed;
+//   top: 0;
+//   right: 0;
+//   left: 0;
+//   bottom: 0;
+// }
+
+body,
+html {
+  background-color: #fff;
+  font-family: Play-Regular;
+  color: #19233c;
+  font-size: 15px;
+  margin-top: 0;
+  padding: 0;
+  border: 0;
+}
+
+img {
+  max-width: 100%;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.disabled-link {
+  color: #212529;
+  cursor: not-allowed;
+  &:hover {
+    color: #212529;
+    cursor: not-allowed;
+  }
+}
+.disabled {
+  opacity: 0.2;
+  cursor: not-allowed;
+}
+.hidden {
+  display: none !important;
+}
+
+.inline-block {
+  display: inline-block !important;
+}
+
+.info {
+  color: #17a2b8;
+  &:hover {
+    color: #5bc0de;
+  }
+}
+.danger {
+  color: #dc3545;
+  &:hover {
+    color: #d9534f;
+  }
+}
+.success {
+  color: #28a745;
+  &:hover {
+    color: #5cb85c;
+  }
+}
+
+.width-100 {
+  width: 100px !important;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+/* Setup Font */
+@font-face {
+  font-family: "Exo2.0-Regular";
+  src: url("./fonts/Exo2.0-Regular.eot");
+  src: local("☺"), url("./fonts/Exo2.0-Regular.woff") format("woff"),
+    url("./fonts/Exo2.0-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Exo2.0-Light";
+  src: url("./fonts/Exo2.0-Light.eot");
+  src: local("☺"), url("./fonts/Exo2.0-Light.woff") format("woff"),
+    url("./fonts/Exo2.0-Light.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "OCRAStd";
+  src: url("./fonts/OCRAStd.eot");
+  src: local("☺"), url("./fonts/OCRAStd.woff") format("woff"),
+    url("./fonts/OCRAStd.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Play-Regular";
+  src: url("./fonts/Play-Regular.eot");
+  src: local("☺"), url("./fonts/Play-Regular.woff") format("woff"),
+    url("./fonts/Play-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}

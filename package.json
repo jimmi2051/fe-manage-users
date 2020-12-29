@@ -1,0 +1,45 @@
+{
+  "name": "manager-users",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "^4.5.0",
+    "eslint": "^7.16.0",
+    "lodash": "^4.17.14",
+    "moment": "2.24.0",
+    "node-sass": "^4.12.0",
+    "query-string": "^6.13.1",
+    "react": "^16.6.0",
+    "react-bootstrap": "^1.0.1",
+    "react-cookies": "^0.1.1",
+    "react-dom": "^16.6.0",
+    "react-js-pagination": "^3.0.2",
+    "react-loading-overlay": "^1.0.1",
+    "react-router-dom": "^5.0.0",
+    "react-scripts": "^4.0.1",
+    "react-select": "^3.0.4",
+    "react-toastr": "^3.0.0",
+    "slugify": "^1.4.5"
+  },
+  "devDependencies": {
+    "eslint-config-react-app": "^4.0.1",
+    "eslint-plugin-react-hooks": "^1.6.0",
+    "flow-bin": "^0.100.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "gulp": "gulp"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}
