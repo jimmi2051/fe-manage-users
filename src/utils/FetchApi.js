@@ -56,7 +56,7 @@ export default function ({ uri, params = {}, opt = {} }) {
   if (AuthStorage.loggedIn) {
     options.headers.Authorization = `Bearer ${AuthStorage.tokenCommon}`;
   }
-  let url = `${API_URL}${url}`;
+  let url = `${API_URL}${uri}`;
 
   if (params && Object.keys(params).length > 0) {
     if (options && options.method === "GET") {
