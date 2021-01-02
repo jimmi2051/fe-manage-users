@@ -5,11 +5,19 @@ import queryString from "query-string";
 export const UserContext = createContext();
 
 class UserContextProvider extends PureComponent {
-  state = {
-    data: [],
-  };
-
   //#region Fetch API
+  fetchGetUsers = (params = {}) => {
+    if (!params.page) {
+      params["page"] = 1;
+    }
+    if (!params.pageSize) {
+      params["pageSize"] = 10;
+    }
+    const payload = {
+      uri: `users?${queryString.stringify(params)}`,
+    };
+    return FetchApi(payload);
+  };
 
   //#endregion
 

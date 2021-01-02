@@ -5,6 +5,8 @@ import RootRoute from "routes";
 import { AppContext } from "layout/AppContext";
 import { ToastContainer } from "react-toastr";
 import { Container } from "react-bootstrap";
+import Header from "components/header";
+import Footer from "components/footer";
 let toastr;
 class Wrapper extends Component {
   state = {};
@@ -30,9 +32,11 @@ class Wrapper extends Component {
           ref={(ref) => (toastr = ref)}
           className="toast-top-right"
         />
-        <Container fluid className="pb-100">
+        <Header />
+        <Container fluid className="height-max">
           <RootRoute />
         </Container>
+        <Footer />
       </AppContext.Provider>
     );
   }
