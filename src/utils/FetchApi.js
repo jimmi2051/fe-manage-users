@@ -26,11 +26,7 @@ export const fetching = (url, option) =>
       return response.status === 204 ? {} : response.json();
     })
     .then((json) => {
-      if (json.error) {
-        throw json.error;
-      } else {
-        return json;
-      }
+      return json;
     })
     .catch((error) => {
       return {
@@ -56,7 +52,7 @@ export default function ({ uri, params = {}, opt = {} }) {
   if (AuthStorage.loggedIn) {
     options.headers.Authorization = `Bearer ${AuthStorage.tokenCommon}`;
   }
-  let url = `${API_URL}${uri}`;
+  let url = `${API_URL}/api/v0/${uri}`;
 
   if (params && Object.keys(params).length > 0) {
     if (options && options.method === "GET") {

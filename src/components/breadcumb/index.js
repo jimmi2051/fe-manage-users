@@ -34,11 +34,6 @@ const Bread = (props) => {
   useEffect(() => {
     const pathName = props?.history?.location?.pathname ?? "/";
 
-    function caseWithRegex(regexString) {
-      const regex = new RegExp(regexString);
-      return (pathName.match(regex) || {}).input;
-    }
-
     switch (pathName) {
       case "/sign-up":
         setBreadcrumbs("Sign Up Page");

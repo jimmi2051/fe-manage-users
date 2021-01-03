@@ -11,40 +11,46 @@ import {
 import Pagination from "react-js-pagination";
 import { UserContext } from "contexts/User";
 import { NavLink } from "react-router-dom";
+import { AppContext } from "layout/AppContext";
+const API_URL = process.env.REACT_APP_URL_API;
 const CustomLink = (props) => <NavLink {...props}>{props.children}</NavLink>;
-const BuildingPage = (props) => {
+const UserListPage = (props) => {
   const { user } = useContext(UserContext);
+  const { appContext } = useContext(AppContext);
   // Parms for pagination.
   const [totalItems, setTotalItems] = useState(0);
   const [pageActive, setPageActive] = useState(1);
+  // eslint-disable-next-line no-unused-vars
   const [itemPerPage, setItemPerPage] = useState(10);
-
+  const [keySearch, setKeySearch] = useState("");
   const [userList, setUserList] = useState([]);
 
   // Func fetch list organization.
-  const handleGetUsers = (page, pageActive) => {
-    const params = { page, pageActive };
+  const handleGetUsers = (page, pageSize) => {
+    const params = { page, pageSize, keySearch };
     const proListUsers = user.fetchGetUsers(params);
     proListUsers.then((res) => {
       if (res.status) {
         const { data } = res;
         setTotalItems(data.total);
         setUserList([...data.data]);
+      } else {
+        if (res.errors) {
+          res.errors.forEach((error) => {
+            appContext.notifyError(
+              "Notification",
+              `Field error: ${error.field} | Message error: ${error.message}`
+            );
+          });
+        }
       }
     });
-    // const proListBuilding = buildings.fetchBuilding(pageActive, itemPerPage);
-    // proListBuilding.then((res) => {
-    //   const { buildings } = res;
-    //   if (buildings) {
-    //     setListBuilding(buildings.rows);
-    //     setTotalItems(buildings.count);
-    //   }
-    // });
   };
 
   // Componentdidmount
   useEffect(() => {
     handleGetUsers(pageActive, itemPerPage);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -64,26 +70,52 @@ const BuildingPage = (props) => {
                   Sign Up
                 </Button>
               </Col>
-              <Col>
-                <Form inline className="justify-content-end">
+              <Col sm={4} md={4} xl={2}>
+                <Form inline className="justify-content-end search-user">
                   <FormControl
                     type="text"
-                    placeholder="Search"
-                    className="mr-sm-2"
+                    placeholder="Search by name or email"
+                    className="input-search"
+                    onChange={(evt) => {
+                      console.log("evt ==>", evt);
+                      setKeySearch(evt.currentTarget.value);
+                    }}
+                    onKeyPress={(e) => {
+                      if (e.key === "Enter") {
+                        handleGetUsers(pageActive, itemPerPage);
+                        e.preventDefault();
+                      }
+                    }}
                   />
-                  <Button variant="outline-success">Search</Button>
+                  <Button
+                    onClick={() => {
+                      handleGetUsers(pageActive, itemPerPage);
+                    }}
+                    variant="outline-success"
+                    className="btn-search"
+                  >
+                    <i className="fa fa-search" aria-hidden="true" />
+                  </Button>
                 </Form>
               </Col>
             </Row>
             <Row>
               <Col>
-                <Table striped bordered hover size="xl" className="mt-sm-4">
+                <Table
+                  striped
+                  bordered
+                  hover
+                  size="xl"
+                  className="mt-sm-4 user-list"
+                >
                   <thead>
                     <tr>
-                      <th className="text-center">#</th>
+                      <th className="text-center" style={{ width: 100 }}>
+                        Index
+                      </th>
                       <th>Email</th>
                       <th>Name</th>
-                      <th>Phone number</th>
+                      <th>Phone Number</th>
                       <th>Address</th>
                       <th>Photo</th>
                     </tr>
@@ -93,12 +125,18 @@ const BuildingPage = (props) => {
                       userList.map((item, index) => {
                         return (
                           <tr key={index}>
-                            <td>{item._id}</td>
-                            <td>{item.email}</td>
-                            <td>{item.name}</td>
-                            <td>{item.telephone}</td>
-                            <td>{item.address}</td>
-                            <td>{item.photo}</td>
+                            <td className="text-center">{index + 1}</td>
+                            <td>{item.email ?? ""}</td>
+                            <td>{item.name ?? ""}</td>
+                            <td>{item.telephone ?? ""}</td>
+                            <td>{item.address ?? ""}</td>
+                            <td className="thumbnail">
+                              <img
+                                src={`${API_URL}${item.photo}`}
+                                alt={item.photo}
+                                className="thumbnail-image"
+                              />
+                            </td>
                           </tr>
                         );
                       })}
@@ -126,4 +164,4 @@ const BuildingPage = (props) => {
     </Row>
   );
 };
-export default BuildingPage;
+export default UserListPage;

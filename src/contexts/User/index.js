@@ -1,4 +1,4 @@
-import React, { Component, createContext, PureComponent } from "react";
+import React, { createContext, PureComponent } from "react";
 import FetchApi from "utils/FetchApi";
 import queryString from "query-string";
 

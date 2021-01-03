@@ -1,0 +1,13 @@
+.search-user {
+  @media screen and (max-width: 767px) {
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+  position: relative;
+  .input-search {
+    width: 100%;
+  }
+  .btn-search {
+    position: absolute;
+  }
+}
