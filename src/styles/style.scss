@@ -13,6 +13,7 @@
 @import "elements/table";
 @import "elements/form";
 @import "elements/thumbnail";
+@import "elements/breadcrumb";
 html {
   overflow-x: hidden;
   width: 100%;
@@ -114,7 +115,7 @@ img {
 }
 
 .height-max {
-  min-height: calc(100vh - 180px);
+  min-height: calc(100vh - 220px);
 }
 
 input[type="number"]::-webkit-inner-spin-button,
